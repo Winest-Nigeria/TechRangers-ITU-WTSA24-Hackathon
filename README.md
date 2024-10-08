@@ -1,5 +1,5 @@
 USING AI TO REDUCE THE 6G STANDARDS BARRIER FOR AFRICAN CONTRIBUTORS
-
+===
 This repository contains the code for a Chatbot developed as part of ITU WTSA-24 Hackathon at India aimed at solving the digital divide between Africa and more advanced countries leveraging AI and 6G technology. The chatbot was designed to empower users by providing them with real-time assistance from ITU standard Knowledge base and information on accessing digital infrastructure, network technologies, and AI-driven solutions.
 
 Problem Statement
