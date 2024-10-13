@@ -18,7 +18,9 @@ The chatbot leverages cutting-edge AI technologies to analyze the challenges uni
 **Alignment with Sustainable Development Goals**
 
 SDG 4 Quality Education
+
 SDG 9 Information, Innovation and Infractructure
+
 SDG 10 Reduced Inequality
 
 **Key Features**
