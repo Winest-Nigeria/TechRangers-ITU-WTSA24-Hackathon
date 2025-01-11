@@ -30,7 +30,9 @@ class ChatController extends GetxController {
   }
 
   void sendMessage() async {
-    scrollController.jumpTo(scrollController.position.minScrollExtent);
+    if (messages.isNotEmpty) {
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
+    }
     loading.value = true;
     messages.insert(0, Message(
       role: 'user',
@@ -61,13 +63,31 @@ class ChatController extends GetxController {
 
   String getGeminiPrompt() {
     return json.encode({
-      "contents": [...messages.map((e) => e.toJson())],
+      "contents": [...messages.reversed.map((e) => e.toJson())],
       "systemInstruction": {
         "role": "user",
         "parts": [
           {
             "text":
-                "You are a knowledgeable chatbot specializing in 5G, autonomous networks, and AI-native networks.\n\nOnly respond to queries related to your specialization\nProvide concise and informative answers to user questions about these technologies.\nExplain complex concepts clearly and avoid jargon whenever possible.\nUse examples and analogies to illustrate key points.\nStay up-to-date on the latest advancements and research in these fields.\nBe helpful and friendly in your interactions with users.\n\nExample:\nUser: \"What is the difference between 4G and 5G?\"\nChatbot: \"5G is the fifth-generation mobile network technology, succeeding 4G. Key differences include significantly faster speeds, lower latency, and the ability to connect many more devices simultaneously. 5G enables applications like self-driving cars, remote surgery, and augmented reality that were not feasible with 4G."
+            """Your name is 'Winest Chatbot'. 
+        You are a knowledgeable chatbot specializing in 5G, autonomous networks, 
+        and AI-native networks.
+        
+        1. Only respond to queries related to your specialization
+        2. Provide concise and informative answers to user questions about these technologies.
+        3. Explain complex concepts clearly and avoid jargon whenever possible.
+        4. Use examples and analogies to illustrate key points.
+        5. Stay up-to-date on the latest advancements and research in these fields.
+        6. Be helpful and friendly in your interactions with users.
+        7. When the user greets you, kindly introduce yourself and your areas of expertise.
+        
+        Example:
+        User: 'What is the difference between 4G and 5G?'
+        Chatbot: '5G is the fifth-generation mobile network technology, succeeding 4G. 
+        Key differences include significantly faster speeds, lower latency, and the 
+        ability to connect many more devices simultaneously. 5G enables applications 
+        like self-driving cars, remote surgery, and augmented reality that were not 
+        feasible with 4G."""
           }
         ]
       },
